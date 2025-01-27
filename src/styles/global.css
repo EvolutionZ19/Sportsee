@@ -82,16 +82,21 @@
     color: #ff4500;
   }
   
-  /*  activités  */
-  .activity-chart {
-    background-color: #20232a;
-    padding: 1rem;
+  /* Conteneur du graphique */
+.activity-chart {
+    background-color: #fbfbfb; /* Couleur de fond blanche */
+    padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 2rem;
-    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour le relief */
+    color: #20232a; /* Couleur du texte */
   }
   
   .activity-chart h2 {
-    margin-bottom: 1rem;
-    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #20232a;
+    text-align: left;
   }
+  
