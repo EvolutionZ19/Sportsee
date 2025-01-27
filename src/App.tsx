@@ -10,9 +10,11 @@ const App: React.FC = () => {
       <div className="main-layout">
         <Sidebar />
         <main className="content">
-          <h1>Bonjour <span style={{ color: '#ff4500' }}>Thomas</span></h1>
+          <h1>
+            Bonjour <span style={{ color: '#ff4500' }}>Thomas</span>
+          </h1>
           <p>Félicitations ! Vous avez explosé vos objectifs hier 🎉</p>
-          <ActivityChart /> {/* Graphique des activités quotidiennes */}
+          <ActivityChart />
         </main>
       </div>
     </div>
