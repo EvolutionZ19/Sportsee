@@ -9,6 +9,9 @@ const Sidebar: React.FC = () => {
         <li>🚴‍♂️</li>
         <li>💪</li>
       </ul>
+      <div className="sidebar-footer">
+        Copyright SportSee 2020
+      </div>
     </aside>
   );
 };

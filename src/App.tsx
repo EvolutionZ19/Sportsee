@@ -1,7 +1,7 @@
 import React from 'react';
-import './styles/global.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import ActivityChart from './components/ActivityChart';
 
 const App: React.FC = () => {
   return (
@@ -10,8 +10,9 @@ const App: React.FC = () => {
       <div className="main-layout">
         <Sidebar />
         <main className="content">
-          <h1>Bienvenue Thomas !</h1>
-          {/* graphiques  pour plus tard*/}
+          <h1>Bonjour <span style={{ color: '#ff4500' }}>Thomas</span></h1>
+          <p>Félicitations ! Vous avez explosé vos objectifs hier 🎉</p>
+          <ActivityChart /> {/* Graphique des activités quotidiennes */}
         </main>
       </div>
     </div>
