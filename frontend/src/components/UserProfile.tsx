@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getUser } from '../services/apiService';
+import axios from 'axios';
 import ActivityChart from './ActivityChart';
 
+// Typage des données utilisateur
 interface UserInfos {
   firstName: string;
   lastName: string;
@@ -21,30 +22,52 @@ interface User {
 }
 
 const UserProfile: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null); // État pour les données utilisateur
+  const [error, setError] = useState<string | null>(null); // État pour les erreurs
+  const [isLoading, setIsLoading] = useState<boolean>(true); // État pour le chargement
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const userData = await getUser(12); // ID de l'utilisateur
-        setUser(userData.data);
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données utilisateur :', error);
+        // Récupère les données utilisateur depuis l'API
+        const response = await axios.get('http://localhost:3000/user/12');
+        console.log('Données utilisateur récupérées :', response.data.data);
+        setUser(response.data.data); // Définit l'utilisateur
+      } catch (err) {
+        console.error('Erreur lors de la récupération des données utilisateur :', err);
+        setError("Impossible de récupérer les données utilisateur.");
+      } finally {
+        setIsLoading(false); // Fin du chargement
       }
     };
 
     fetchUser();
   }, []);
 
-  if (!user) {
+  if (isLoading) {
     return <p>Chargement des données utilisateur...</p>;
   }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+  if (!user) {
+    return <p>Aucune donnée utilisateur disponible.</p>;
+  }
+
+  // Vérifie que l'ID utilisateur est bien défini
+  console.log('User ID dans UserProfile :', user.id);
 
   return (
     <div>
       <h1>Bonjour, {user.userInfos.firstName} !</h1>
-      <p>Score du jour : {user.todayScore * 100}%</p>
-      <ActivityChart userId={user.id} />
+      <p>Score du jour : {Math.round(user.todayScore * 100)}%</p>
+      {user.id ? (
+        <ActivityChart userId={user.id} />
+      ) : (
+        <p>Chargement des activités...</p>
+      )}
     </div>
   );
 };

@@ -1,20 +1,23 @@
 import React from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import ActivityChart from './components/ActivityChart';
+import UserProfile from './components/UserProfile';
 
 const App: React.FC = () => {
   return (
     <div className="app">
+      {/* En-tête de l'application */}
       <Header />
+
+      {/* Mise en page principale */}
       <div className="main-layout">
+        {/* Barre latérale */}
         <Sidebar />
+
+        {/* Contenu principal */}
         <main className="content">
-          <h1>
-            Bonjour <span style={{ color: '#ff4500' }}>Thomas</span>
-          </h1>
-          <p>Félicitations ! Vous avez explosé vos objectifs hier 🎉</p>
-          <ActivityChart />
+          {/* Intégration du composant UserProfile */}
+          <UserProfile />
         </main>
       </div>
     </div>
