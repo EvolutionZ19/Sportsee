@@ -1,23 +1,22 @@
 import React from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import UserProfile from './components/UserProfile';
+import ActivityChart from './components/ActivityChart';
+import AverageSessionDuration from './components/AverageSessionDuration'; 
 
 const App: React.FC = () => {
   return (
     <div className="app">
-      {/* En-tête de l'application */}
       <Header />
-
-      {/* Mise en page principale */}
       <div className="main-layout">
-        {/* Barre latérale */}
         <Sidebar />
-
-        {/* Contenu principal */}
         <main className="content">
-          {/* Intégration du composant UserProfile */}
-          <UserProfile />
+          <h1>
+            Bonjour <span style={{ color: '#ff4500' }}>Karl</span>
+          </h1>
+          <p>Félicitations ! Vous avez explosé vos objectifs hier 🎉</p>
+          <ActivityChart userId={12} /> {/* Affichage du graphique d'activité */}
+          <AverageSessionDuration userId={12} /> {/* Ajouter le composant des sessions moyennes */}
         </main>
       </div>
     </div>
