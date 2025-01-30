@@ -111,7 +111,7 @@ const ActivityChart: React.FC<ActivityChartProps> = ({ userId }) => {
 
           {/* Inverser l'ordre des barres ici : Barres pour le poids en premier et calories en second */}
           <Bar
-            dataKey="kilogram" // Assurez-vous que c'est kilogram et non weight
+            dataKey="kilogram" 
             yAxisId="weight"
             fill="#282D30"
             name="Poids (kg)"
