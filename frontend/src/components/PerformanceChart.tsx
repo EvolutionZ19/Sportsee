@@ -11,7 +11,7 @@ import {
 } from 'recharts';
 
 interface PerformanceData {
-  kind: string;
+  kind: number;
   value: number;
 }
 
@@ -48,20 +48,43 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ userId }) => {
     return <p>{error}</p>;
   }
 
+  // Libellés pour chaque type de performance
+  const performanceLabels = {
+    1: 'Intensité',
+    2: 'Vitesse',
+    3: 'Force',
+    4: 'Endurance',
+    5: 'Energie',
+    6: 'Cardio',
+  };
+
+  // Formatage des données pour le graphique radar
+  const data = performanceData.map(item => ({
+    kind: performanceLabels[item.kind] || '',
+    value: item.value,
+  }));
+
   return (
     <div className="performance-chart">
-      <h2>Intensité</h2>
-      <ResponsiveContainer width="100%" height={300}>
-        <RadarChart data={performanceData}>
+      <ResponsiveContainer width="100%" height={250}>
+        <RadarChart data={data}>
           {/* Grille */}
-          <PolarGrid strokeDasharray="3 3" />
-          
-          {/* Axe des catégories */}
-          <PolarAngleAxis dataKey="kind" tick={{ fill: '#9b9b9b', fontSize: 12 }} />
+          <PolarGrid strokeDasharray="3 3" stroke="#fff" />
+
+          {/* Axe des catégories (types de performance) */}
+          <PolarAngleAxis
+            dataKey="kind"
+            tickLine={false}
+            axisLine={false} // Pas de ligne pour l'axe
+          />
 
           {/* Axe des valeurs */}
-          <PolarRadiusAxis angle={30} domain={[0, 250]} tick={false} />
-          
+          <PolarRadiusAxis
+            angle={30}
+            domain={[0, 250]} // Plage dynamique de 0 à 250
+            tick={false} // Pas de ticks
+          />
+
           {/* Ligne du graphique */}
           <Radar
             name="Performance"
@@ -69,8 +92,11 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ userId }) => {
             stroke="#E60000"
             fill="#E60000"
             fillOpacity={0.6}
+            strokeWidth={3}
           />
-          <Tooltip />
+
+          {/* Tooltip personnalisé */}
+          <Tooltip contentStyle={{ backgroundColor: '#e60000', color: 'white', fontWeight: 'bold' }} />
         </RadarChart>
       </ResponsiveContainer>
     </div>

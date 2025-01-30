@@ -53,6 +53,9 @@ const AverageSessionDuration: React.FC<AverageSessionDurationProps> = ({ userId 
     return <p>Aucune donnée disponible pour la durée des sessions.</p>;
   }
 
+  // Les jours de la semaine, en commençant par Lundi
+  const daysOfWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+
   return (
     <div className="average-session-duration">
       <h2>Durée moyenne des sessions</h2>
@@ -62,7 +65,13 @@ const AverageSessionDuration: React.FC<AverageSessionDurationProps> = ({ userId 
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           
           {/* Axe X : Jours de la semaine */}
-          <XAxis dataKey="day" tickLine={false} tick={{ fill: '#9b9b9b', fontSize: 12 }} axisLine={false} />
+          <XAxis
+            dataKey="day"
+            tickFormatter={(tick) => daysOfWeek[tick - 1]} // Mappe les numéros de jour à des noms de jours
+            tickLine={false}
+            tick={{ fill: '#9b9b9b', fontSize: 12 }}
+            axisLine={false}
+          />
           
           {/* Axe Y : Durée des sessions en minutes */}
           <YAxis tickLine={false} tick={{ fill: '#9b9b9b', fontSize: 12 }} axisLine={false} />
