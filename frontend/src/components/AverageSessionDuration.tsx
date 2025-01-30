@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUserAverageSessions } from '../services/apiService'; // Assurez-vous que cette fonction existe
+import { getUserAverageSessions } from '../services/apiService'; 
 import {
   LineChart,
   Line,
@@ -9,6 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import CustomTooltip from './CustomTooltip'; // Import du Tooltip personnalisé
 
 interface AverageSession {
   day: number;
@@ -66,8 +67,8 @@ const AverageSessionDuration: React.FC<AverageSessionDurationProps> = ({ userId 
           {/* Axe Y : Durée des sessions en minutes */}
           <YAxis tickLine={false} tick={{ fill: '#9b9b9b', fontSize: 12 }} axisLine={false} />
           
-          {/* Tooltip */}
-          <Tooltip />
+          {/* Tooltip personnalisé */}
+          <Tooltip content={<CustomTooltip />} />
 
           {/* Ligne des sessions */}
           <Line type="monotone" dataKey="sessionLength" stroke="#E60000" strokeWidth={3} />
