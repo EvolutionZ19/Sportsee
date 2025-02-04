@@ -5,6 +5,7 @@ import ActivityChart from './components/ActivityChart';
 import AverageSessionDuration from './components/AverageSessionDuration'; 
 import PerformanceChart from './components/PerformanceChart';
 import ScoreDuJour from './components/ScoreDuJour';
+import UserStats from './components/UserStats';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
             Bonjour <span style={{ color: '#ff4500' }}>Karl</span>
           </h1>
           <p>Félicitations ! Vous avez explosé vos objectifs hier 🎉</p>
+          <UserStats userId={12} /> {/* Affichage des statistiques utilisateur */}
           <ActivityChart userId={12} /> {/* Affichage du graphique d'activité */}
           <AverageSessionDuration userId={12} /> {/* Ajouter le composant des sessions moyennes */}
           <PerformanceChart userId={12} /> {/* Ajouter le graphique des performances */}
