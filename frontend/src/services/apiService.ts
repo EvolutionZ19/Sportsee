@@ -1,3 +1,4 @@
+// apiService.ts
 import axios from 'axios';
 
 const API_URL = 'http://localhost:3000';
@@ -45,3 +46,14 @@ export const getUserPerformance = async (userId: number) => {
     throw error;
   }
 };
+
+export const getUserScore = async (userId: number) => {
+  try {
+    const response = await axios.get(`${API_URL}/user/${userId}`);
+    return response.data.todayScore;  // Récupère le score du jour
+  } catch (error) {
+    console.error('Erreur lors de la récupération du score :', error);
+    throw error;
+  }
+};
+

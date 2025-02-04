@@ -99,4 +99,34 @@
     color: #20232a;
     text-align: left;
   }
+
+  .score-du-jour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .score-du-jour h2 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .score-du-jour p {
+    font-size: 14px;
+    color: #74798c;
+    text-align: center;
+  }
+  
+  .score-text p {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #74798c;
+  }
   
